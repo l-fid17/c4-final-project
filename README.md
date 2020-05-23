@@ -226,7 +226,14 @@ await this.dynamoDBClient
 
 ## Backend
 
-To deploy an application run the following commands:
+To deploy the application:
+
+- make sure to have aws cli installed and properly configured
+- you can reuse my auth0 app or change:
+  - the AUTH_0_SECRET in serverless.yml with your own
+  * Please note using a different auth0 app may require additional conifguration.
+
+Then run the following commands:
 
 ```
 cd backend
