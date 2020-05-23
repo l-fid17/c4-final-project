@@ -14,8 +14,8 @@ provider:
 
   environment:
     TODOS_TABLE: Todos-${self:provider.stage}
-    AUTH_0_SECRET: z2JvJFPCw4F2SljDrRt2tQQIy9e3MArsWEYFv2MVpyTjO4b5DVjXhHqfewYvvjvg
-    S3_BUCKET: ross-serverless-todo-s3-${self:provider.stage}
+    AUTH_0_SECRET: iZKbNzKyMVnZQEQyDhXLGNXqgj8OlkjUCgYdbWjvmxtJ5xEba1queGEXUrtZCdZg
+    S3_BUCKET: sls-todo-s3-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
 
 functions:
