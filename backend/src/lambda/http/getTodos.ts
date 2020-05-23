@@ -1,6 +1,7 @@
 import 'source-map-support/register'
 import * as AWS from 'aws-sdk'
-import { parseUserId } from '../../auth/utils'
+// import { parseUserId } from '../../auth/utils'
+import { getUserId } from '../utils'
 
 import {
   APIGatewayProxyEvent,
@@ -16,9 +17,9 @@ export const handler: APIGatewayProxyHandler = async (
 ): Promise<APIGatewayProxyResult> => {
   // TODO: Get all TODO items for a current user
 
-  const authHeader = event.headers.Authorization
-  const splitted = authHeader.split(' ')
-  const userId = parseUserId(splitted[1])
+  // const authHeader = event.headers.Authorization
+  // const splitted = authHeader.split(' ')
+  // const userId = parseUserId(splitted[1])
 
   const result = await ddbClient
     .query({
@@ -26,7 +27,7 @@ export const handler: APIGatewayProxyHandler = async (
       IndexName: 'UserIdIndex',
       KeyConditionExpression: 'userId = :userId',
       ExpressionAttributeValues: {
-        ':userId': userId
+        ':userId': getUserId(event)
       },
 
       ScanIndexForward: false
