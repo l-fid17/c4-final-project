@@ -30,7 +30,7 @@ export const handler: APIGatewayProxyHandler = async (
     Expires: expiration
   })
 
-  const imageUrl = `https://${bucket}.s3.amazonaws.com/${imageId}`
+  const imageUrl = `https://${mediaBucket}.s3.amazonaws.com/${imageId}`
 
   const updatedTodoURL = {
     TableName: todosTable,
