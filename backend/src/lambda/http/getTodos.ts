@@ -34,7 +34,7 @@ export const handler: APIGatewayProxyHandler = async (
     })
     .promise()
 
-  const todos = result.Items
+  const todos = result.Items || []
 
   return {
     statusCode: 200,
