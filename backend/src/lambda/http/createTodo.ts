@@ -1,6 +1,7 @@
 import 'source-map-support/register'
 import * as uuid from 'uuid'
 import * as AWS from 'aws-sdk'
+import { parseUserId } from '../../auth/utils'
 
 import {
   APIGatewayProxyEvent,
@@ -21,8 +22,13 @@ export const handler: APIGatewayProxyHandler = async (
   // TODO: Implement creating a new TODO item
   const todoId = uuid.v4()
 
+  const authHeader = event.headers.Authorization
+  const splitted = authHeader.split(" ")
+  const token = splitted[1]
+
   const todo = {
     todoId,
+    userId: parseUserId(token)
     ...newTodo
   }
 

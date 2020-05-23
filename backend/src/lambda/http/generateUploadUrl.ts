@@ -43,6 +43,7 @@ export const handler: APIGatewayProxyHandler = async (
   }
 
   await ddbClient.update(updatedTodoURL).promise()
+
   return {
     statusCode: 202,
     headers: {
