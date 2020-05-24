@@ -18,6 +18,18 @@ provider:
     S3_BUCKET: sls-todo-s3-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
 
+custom:
+  HttpHandler:
+    handler: src/lambda/http/createTodo.handler
+    events:
+      - http:
+          method: post
+          path: items
+          request:
+            # Schema that will be used to validate incoming requests
+            schema:
+              application/json: ${file(models/create-todo-model.json)}
+
 functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
